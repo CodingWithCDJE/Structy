@@ -1,68 +1,30 @@
-/*
-Write a function, linkedListValues, that takes in the head of a linked list as an argument. The function should return an array containing all values of the nodes in the linked list.
-
+/* 
+Write a function, linkedListFind, that takes in the head of a linked list and a target value. The function should return a boolean indicating whether or not the linked list contains the target.
 */
-
 // class Node {
 //   constructor(val) {
 //     this.val = val;
 //     this.next = null;
 //   }
 // }
-// Iterative version:
-const linkedListValues = (head) => {
+// Iterative
+// Time: O(n)
+// Space: O(1)
+const linkedListFind = (head, target) => {
   // todo
   let current = head;
-  const arrHolder = [];
-
   while (current !== null) {
-    arrHolder.push(current.val);
+    if (current.val === target) return true;
     current = current.next;
   }
-  return arrHolder;
+  return false;
 };
 
-// Recursive version:
-//   const linkedListValues = (head) => {
-//     const arrHolder = []
-//     fillValues(head, arrHolder)
-
-//     return arrHolder;
-
-//   }
-
-//     const fillValues = (head, arrHolder) => {
-//       if (head === null) return;
-//       arrHolder.push(head.val)
-//       fillValues(head.next, arrHolder);
-//   }
-
-const a = new Node('a');
-const b = new Node('b');
-const c = new Node('c');
-const d = new Node('d');
-
-a.next = b;
-b.next = c;
-c.next = d;
-
-// a -> b -> c -> d
-
-linkedListValues(a); // -> [ 'a', 'b', 'c', 'd' ]
-
-const x = new Node('x');
-const y = new Node('y');
-
-x.next = y;
-
-// x -> y
-
-linkedListValues(x); // -> [ 'x', 'y' ]
-
-const q = new Node('q');
-
-// q
-
-linkedListValues(q); // -> [ 'q' ]
-
-linkedListValues(null); // -> [ ]
+// Recursive:
+// Time: O(n)
+// Space: O(n)
+// const linkedListFind = (head, target) => {
+//   if(head === null) return false;
+//   if(head.val === target) return true;
+//   return linkedListFind(head.next, target);
+// }
